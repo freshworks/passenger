@@ -284,6 +284,10 @@ LOCATION_CONFIGURATION_OPTIONS = [
 		:name   => 'passenger_sticky_sessions_cookie_name',
 		:type   => :string
 	},
+	{
+		:name     => 'passenger_memory_limit',
+		:type     => :integer,
+	},
 
 	###### Enterprise features ######
 	{
@@ -302,12 +306,6 @@ LOCATION_CONFIGURATION_OPTIONS = [
 	},
 	{
 		:name     => 'passenger_max_request_time',
-		:type     => :integer,
-		:function => 'passenger_enterprise_only',
-		:field    => nil
-	},
-	{
-		:name     => 'passenger_memory_limit',
 		:type     => :integer,
 		:function => 'passenger_enterprise_only',
 		:field    => nil

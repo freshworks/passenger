@@ -396,6 +396,8 @@ public:
 	 */
 	unsigned long maxRequests;
 
+	unsigned long memoryLimit;
+
 	/** When true, Pool::get() and Pool::asyncGet() will create the necessary
 	 * SuperGroup and Group structures just as normally, and will even handle
 	 * restarting logic, but will not actually spawn any processes and will not
@@ -458,6 +460,7 @@ public:
 		stickySessionId         = 0;
 		statThrottleRate        = 0;
 		maxRequests             = 0;
+		memoryLimit             = 0;
 		noop                    = false;
 
 		/*********************************/

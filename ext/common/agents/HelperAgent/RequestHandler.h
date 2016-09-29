@@ -1957,6 +1957,7 @@ private:
 		fillPoolOption(client, options.minProcesses, "PASSENGER_MIN_PROCESSES");
 		fillPoolOption(client, options.maxProcesses, "PASSENGER_MAX_PROCESSES");
 		fillPoolOption(client, options.maxRequests, "PASSENGER_MAX_REQUESTS");
+		fillPoolOption(client, options.memoryLimit, "PASSENGER_MEMORY_LIMIT");
 		fillPoolOption(client, options.spawnMethod, "PASSENGER_SPAWN_METHOD");
 		fillPoolOption(client, options.startCommand, "PASSENGER_START_COMMAND");
 		fillPoolOptionSecToMsec(client, options.startTimeout, "PASSENGER_START_TIMEOUT");

@@ -601,6 +601,7 @@ Group::onSessionClose(const ProcessPtr &process, Session *session) {
 
 	bool detachingBecauseOfMaxRequests = false;
 	bool detachingBecauseCapacityNeeded = false;
+	bool detachingBecauseOfMemoryLimit = false;
 	bool shouldDetach =
 		( detachingBecauseOfMaxRequests = (
 			options.maxRequests > 0
@@ -614,6 +615,10 @@ Group::onSessionClose(const ProcessPtr &process, Session *session) {
 					|| anotherGroupIsWaitingForCapacity()
 				)
 			)
+		) || ( detachingBecauseOfMemoryLimit = (
+			       options.memoryLimit > 0
+			       && process->metrics.realMemory() >= (options.memoryLimit * 1024)
+			       )
 		);
 	bool shouldDisable =
 		process->enabled == Process::DISABLING
@@ -634,7 +639,12 @@ Group::onSessionClose(const ProcessPtr &process, Session *session) {
 				 */
 				P_DEBUG("Process " << process->inspect() << " is no longer totally "
 					"busy; detaching it in order to make room in the pool");
-			} else {
+			} else if (detachingBecauseOfMemoryLimit) {
+				P_DEBUG("Process " << process->inspect() <<
+					" has reached its memory limit (" <<
+					options.memoryLimit << "); detaching it");
+			}
+			else {
 				/* This process has processed its maximum number of requests,
 				 * so we detach it.
 				 */
