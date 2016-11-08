@@ -640,9 +640,9 @@ Group::onSessionClose(const ProcessPtr &process, Session *session) {
 				P_DEBUG("Process " << process->inspect() << " is no longer totally "
 					"busy; detaching it in order to make room in the pool");
 			} else if (detachingBecauseOfMemoryLimit) {
-				P_DEBUG("Process " << process->inspect() <<
-					" has reached its memory limit (" <<
-					options.memoryLimit << "); detaching it");
+				P_INFO("Process " << process->inspect() <<
+				       " has reached its memory limit (" <<
+				       options.memoryLimit << "); detaching it");
 			}
 			else {
 				/* This process has processed its maximum number of requests,
