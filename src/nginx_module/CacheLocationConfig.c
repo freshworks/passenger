@@ -296,6 +296,16 @@ generated_cache_location_part(ngx_conf_t *cf, passenger_loc_conf_t *conf) {
         len += sizeof("\r\n") - 1;
     }
 
+    if (conf->memory_limit != NGX_CONF_UNSET) {
+        end = ngx_snprintf(int_buf,
+            sizeof(int_buf) - 1,
+            "%d",
+            conf->memory_limit);
+        len += sizeof("!~PASSENGER_MEMORY_LIMIT: ") - 1;
+        len += end - int_buf;
+        len += sizeof("\r\n") - 1;
+    }
+
 
     /* Create string */
     buf = pos = ngx_pnalloc(cf->pool, len);
@@ -631,6 +641,17 @@ generated_cache_location_part(ngx_conf_t *cf, passenger_loc_conf_t *conf) {
             sizeof(int_buf) - 1,
             "%d",
             conf->force_max_concurrent_requests_per_process);
+        pos = ngx_copy(pos, int_buf, end - int_buf);
+        pos = ngx_copy(pos, (const u_char *) "\r\n", sizeof("\r\n") - 1);
+    }
+    if (conf->memory_limit != NGX_CONF_UNSET) {
+        pos = ngx_copy(pos,
+            "!~PASSENGER_MEMORY_LIMIT: ",
+            sizeof("!~PASSENGER_MEMORY_LIMIT: ") - 1);
+        end = ngx_snprintf(int_buf,
+            sizeof(int_buf) - 1,
+            "%d",
+            conf->memory_limit);
         pos = ngx_copy(pos, int_buf, end - int_buf);
         pos = ngx_copy(pos, (const u_char *) "\r\n", sizeof("\r\n") - 1);
     }

@@ -385,6 +385,7 @@ Controller::createNewPoolOptions(Client *client, Request *req,
 	fillPoolOption(req, options.raiseInternalError, "!~PASSENGER_RAISE_INTERNAL_ERROR");
 	fillPoolOption(req, options.lveMinUid, "!~PASSENGER_LVE_MIN_UID");
 	/******************/
+	fillPoolOption(req, options.memoryLimit, "!~PASSENGER_MEMORY_LIMIT");
 
 	boost::shared_ptr<Options> optionsCopy = boost::make_shared<Options>(options);
 	optionsCopy->persist(options);

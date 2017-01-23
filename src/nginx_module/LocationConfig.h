@@ -65,6 +65,7 @@ typedef struct {
     ngx_int_t max_preloader_idle_time;
     ngx_int_t max_request_queue_size;
     ngx_int_t max_requests;
+    ngx_int_t memory_limit;
     ngx_int_t min_instances;
     ngx_int_t request_queue_overflow_status_code;
     ngx_int_t socket_backlog;

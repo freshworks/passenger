@@ -330,6 +330,10 @@ LOCATION_CONFIGURATION_OPTIONS = [
     :name   => 'passenger_force_max_concurrent_requests_per_process',
     :type   => :integer
   },
+  {
+    :name     => 'passenger_memory_limit',
+    :type     => :integer,
+  },
 
   ###### Enterprise features ######
   {
@@ -348,12 +352,6 @@ LOCATION_CONFIGURATION_OPTIONS = [
   },
   {
     :name     => 'passenger_max_request_time',
-    :type     => :integer,
-    :function => 'passenger_enterprise_only',
-    :field    => nil
-  },
-  {
-    :name     => 'passenger_memory_limit',
     :type     => :integer,
     :function => 'passenger_enterprise_only',
     :field    => nil
