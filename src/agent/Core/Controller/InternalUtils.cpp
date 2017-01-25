@@ -69,7 +69,7 @@ Controller::disconnectWithClientSocketWriteError(Client **client, int e) {
 	message << ServerKit::getErrorDesc(e);
 	message << " (errno=" << e << ")";
 	if (e == EPIPE || e == ECONNRESET) {
-		logLevel = LVL_INFO;
+		logLevel = LVL_WARN;
 	} else {
 		logLevel = LVL_WARN;
 	}
