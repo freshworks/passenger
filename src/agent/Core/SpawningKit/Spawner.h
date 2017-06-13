@@ -1098,7 +1098,7 @@ protected:
 		details.spawnStartTime = SystemTime::getUsec();
 		details.gupid = integerToHex(SystemTime::get() / 60) + "-" +
 			config->randomGenerator->generateAsciiString(10);
-		details.timeout = details.options->startTimeout * 1000;
+		details.timeout = (unsigned long long) details.options->startTimeout * 1000;
 
 		string result;
 		try {

@@ -289,7 +289,7 @@ private:
 			details.stderrCapturer->start();
 			details.debugDir = debugDir;
 			details.options = &options;
-			details.timeout = options.startTimeout * 1000;
+			details.timeout = (unsigned long long) options.startTimeout * 1000;
 
 			{
 				this_thread::restore_interruption ri(di);
