@@ -218,6 +218,7 @@ typedef struct {
     ngx_int_t max_preloader_idle_time_explicitly_set;
     ngx_int_t max_request_queue_size_explicitly_set;
     ngx_int_t max_requests_explicitly_set;
+    ngx_int_t memory_limit_explicitly_set;
     ngx_int_t meteor_app_settings_explicitly_set;
     ngx_int_t min_instances_explicitly_set;
     ngx_int_t monitor_log_file_explicitly_set;
