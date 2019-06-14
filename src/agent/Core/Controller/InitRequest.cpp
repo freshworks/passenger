@@ -384,6 +384,7 @@ Controller::createNewPoolOptions(Client *client, Request *req,
 	// we apply maxInstancesPerApp to options.maxProcesses (which can be overridden by Enterprise).
 	options.maxProcesses = mainConfig.maxInstancesPerApp;
 	/******************/
+	fillPoolOption(req, options.memoryLimit, "!~PASSENGER_MEMORY_LIMIT");
 
 	boost::shared_ptr<Options> optionsCopy = boost::make_shared<Options>(options);
 	optionsCopy->persist(options);
