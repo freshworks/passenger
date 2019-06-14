@@ -88,6 +88,7 @@ Group::mergeOptions(const Options &other) {
 	options.minProcesses     = other.minProcesses;
 	options.statThrottleRate = other.statThrottleRate;
 	options.maxPreloaderIdleTime = other.maxPreloaderIdleTime;
+	options.memoryLimit          = other.memoryLimit;
 }
 
 /* Given a hook name like "queue_full_error", we return HookScriptOptions filled in with this name and a spec

@@ -730,8 +730,6 @@ NGINX_CONFIGURATION_OPTIONS = [
     :name     => 'passenger_memory_limit',
     :scope    => :application,
     :type     => :integer,
-    :function => 'passenger_enterprise_only',
-    :field    => nil
   },
   {
     :name     => 'passenger_concurrency_model',

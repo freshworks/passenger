@@ -401,6 +401,8 @@ public:
 	 */
 	unsigned long maxRequests;
 
+	unsigned long memoryLimit;
+
 	/** If the current time (in microseconds) has already been queried, set it
 	 * here. Pool will use this timestamp instead of querying it again.
 	 */
@@ -475,7 +477,8 @@ public:
 		  statThrottleRate(DEFAULT_STAT_THROTTLE_RATE),
 		  maxRequests(0),
 		  currentTime(0),
-		  noop(false)
+		  noop(false),
+		  memoryLimit(0)
 		  /*********************************/
 	{
 		/*********************************/
